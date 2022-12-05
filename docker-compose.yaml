@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: web
+    build:
+      context: ./php-mysql-crud
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    build:
+      context: ./php-mysql-crud/database
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - mysql_data:/var/lib/mysql/
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql_data:
