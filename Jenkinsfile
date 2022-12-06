@@ -5,16 +5,14 @@ pipeline{
     }
 
     stages{
-        stage('Git Checkout Project'){
-            steps{
-                deleteDir()  // clean up our workspace
-                {
-                    git branch: 'main',
-                    credentialsId: 'ssh-key-github',
-                    url: 'git@github.com:CodePathfinder/cicd_project.git'
-                }
-            }
-        }
+        // stage('Git Checkout Project'){
+        //     steps{
+        //         deleteDir()  // clean up our workspace
+                // git branch: 'main',
+                // credentialsId: 'ssh-key-github',
+                // url: 'git@github.com:CodePathfinder/jenkins_lab.git'
+        //     }
+        // }
         stage('Lookup on workspace tree'){
             steps{
                 echo "WORKSPACE: ${WORKSPACE}"
